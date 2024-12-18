@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dress Order Homepage</title>
+    <style>
+        /* Global Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+
+        /* Header Section */
+        header {
+            background-color: #ff6f61;
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 3rem;
+        }
+
+        /* Navigation Bar */
+        nav {
+            background-color: #333;
+            text-align: center;
+            padding: 10px 0;
+        }
+
+        nav ul {
+            list-style-type: none;
+        }
+
+        nav ul li {
+            display: inline;
+            margin-right: 20px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 1.2rem;
+        }
+
+        nav ul li a:hover {
+            text-decoration: underline;
+        }
+
+        /* Banner Section */
+        .banner {
+            background-image: url('https://via.placeholder.com/1500x600/ff6f61/ffffff?text=Stylish+Dresses');
+            background-size: cover;
+            color: white;
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        .banner h2 {
+            font-size: 3rem;
+            margin-bottom: 10px;
+        }
+
+        .banner p {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+        }
+
+        .btn-order {
+            background-color: #fff;
+            color: #ff6f61;
+            padding: 12px 20px;
+            font-size: 1.2rem;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .btn-order:hover {
+            background-color: #ff4539;
+            color: white;
+        }
+
+        /* Dress Collection Section */
+        .collection {
+            display: flex;
+            justify-content: space-around;
+            padding: 40px;
+            flex-wrap: wrap;
+        }
+
+        .dress-item {
+            width: 30%;
+            margin-bottom: 30px;
+            text-align: center;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .dress-item img {
+            width: 100%;
+            border-top-left-radius: 8px;
+            border-top-right-radius: 8px;
+        }
+
+        .dress-item h3 {
+            font-size: 1.5rem;
+            margin-top: 10px;
+        }
+
+        .dress-item p {
+            font-size: 1.2rem;
+            color: #666;
+            margin: 10px 0;
+        }
+
+        .dress-item .price {
+            font-size: 1.4rem;
+            font-weight: bold;
+            color: #ff6f61;
+            margin-bottom: 20px;
+        }
+
+        /* Footer Section */
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+        }
+
+        footer p {
+            font-size: 1rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .collection {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .dress-item {
+                width: 80%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header Section -->
+    <header>
+        <h1>Dress Order</h1>
+        <p>Find the perfect dress for any occasion</p>
+    </header>
+
+    <!-- Navigation Bar -->
+    <nav>
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Shop</a></li>
+            <li><a href="#">About Us</a></li>
+            <li><a href="#">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Banner Section -->
+    <section class="banner">
+        <h2>Stylish Dresses Await You</h2>
+        <p>Browse through our exclusive collection and order your perfect dress today.</p>
+        <button class="btn-order">Order Now</button>
+    </section>
+
+    <!-- Dress Collection Section -->
+    <section class="collection">
+        <div class="dress-item">
+            <img src="https://via.placeholder.com/300x400/ff6f61/ffffff?text=Dress+1" alt="Dress 1">
+            <h3>Elegant Evening Dress</h3>
+            <p>Perfect for an evening party or special event.</p>
+            <p class="price">$120.00</p>
+            <button class="btn-order">Order Now</button>
+        </div>
+
+        <div class="dress-item">
+            <img src="https://via.placeholder.com/300x400/ff6f61/ffffff?text=Dress+2" alt="Dress 2">
+            <h3>Casual Day Dress</h3>
+            <p>Comfortable and stylish for everyday wear.</p>
+            <p class="price">$80.00</p>
+            <button class="btn-order">Order Now</button>
+        </div>
+
+        <div class="dress-item">
+            <img src="https://via.placeholder.com/300x400/ff6f61/ffffff?text=Dress+3" alt="Dress 3">
+            <h3>Summer Beach Dress</h3>
+            <p>Stay cool and fashionable on your summer holiday.</p>
+            <p class="price">$60.00</p>
+            <button class="btn-order">Order Now</button>
+        </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer>
+        <p>&copy; 2024 Dress Order. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>
