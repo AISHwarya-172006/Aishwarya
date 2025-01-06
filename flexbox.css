@@ -1,0 +1,34 @@
+.one{
+    border:2px solid green;
+    position:relative;
+    padding-top: 13px;
+    padding-bottom: 13px
+     background-color: blueviolet;
+    
+
+}
+.two{
+    border:2px solid blue;
+    position:relative;
+    background-color: azure;
+    padding-top: 13px;
+    padding-bottom: 13px
+    
+   
+
+}
+.three{
+    border:2px solid yellow;
+    background-color: bisque;
+    position:relative;
+ 
+   
+    padding-top: 13px;
+    padding-bottom: 13px
+
+}
+.container
+{
+    display:flex
+    flex-direction:column
+}
