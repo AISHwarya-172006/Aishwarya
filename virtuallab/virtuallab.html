@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Virtual Labs</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <img src="https://www.google.com/url?sa=i&url=https%3A%2F%2Fen.wikipedia.org%2Fwiki%2FSri_Krishna_College_of_Engineering_%2526_Technology&psig=AOvVaw2hwTfzmsqXGbKCqf5FDLrH&ust=1737985571176000&source=images&cd=vfe&opi=89978449&ved=0CBEQjRxqFwoTCOCTuJbDk4sDFQAAAAAdAAAAABAE alt=" Virtual Labs Logo class="logo">
+        <h1>Virtual Labs</h1>
+        <nav>
+            <ul>
+                <li><a href="#introduction">Introduction</a></li>
+                <li><a href="#experiments">List of Experiments</a></li>
+                <li><a href="#people">People</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="introduction">
+        <h2>Introduction</h2>
+        <p>Welcome to our Virtual Labs! This platform offers various experiments for educational purposes. You can explore, learn, and understand different scientific principles through interactive experiments.</p>
+    </section>
+
+    <section id="experiments">
+        <h2>List of Experiments</h2>
+        <p>Here is a list of experiments you can perform:</p>
+        <ul>
+            <li><a href="#experiment1">Experiment 1: Chemistry Experiment</a></li>
+            <li><a href="#experiment2">Experiment 2: Physics Experiment</a></li>
+            <li><a href="#experiment3">Experiment 3: Biology Experiment</a></li>
+        </ul>
+
+        <!-- Interactive Chemistry Experiment -->
+        <div id="experiment1" class="experiment">
+            <h3>Experiment 1: Chemistry Experiment</h3>
+            <p>Mix the two solutions to see a chemical reaction.</p>
+            <button onclick="mixSolutions()">Mix Solutions</button>
+            <p id="result"></p>
+        </div>
+    </section>
+
+    <section id="people">
+        <h2>People</h2>
+        <p>Meet the team behind Virtual Labs:</p>
+        <ul>
+            <li>Dr. John Doe - Project Lead</li>
+            <li>Jane Smith - Research Scientist</li>
+            <li>Mary Johnson - Lab Technician</li>
+        </ul>
+    </section>
+
+    <section id="upload">
+        <h2>Upload Pictures</h2>
+        <p>Upload your experiment pictures:</p>
+        <input type="file" id="fileInput" style="display: none;" onchange="displayImage(this)">
+        <a href="#" onclick="document.getElementById('fileInput').click();">Click here to upload a picture</a>
+        <br>
+        <img id="uploadedImage" src="#" alt="Uploaded Image" style="display: none; max-width: 300px; margin-top: 10px;">
+    </section>
+
+    <footer>
+        <p>&copy; 2025 Virtual Labs. All rights reserved.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

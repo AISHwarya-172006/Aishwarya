@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Experiments - Virtual Labs</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #e1e1ea;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+        header {
+            background-color: #4ca3a7;
+            color: white;
+            padding: 20px;
+            width: 100%;
+        }
+        .logo {
+            width: 100px;
+            height: auto;
+            margin-bottom: 20px;
+        }
+        .breadcrumb {
+            background-color: #67859e;
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            font-size: 14px;
+            width: 100%;
+            text-align: left;
+            display: flex;
+            align-items: center;
+        }
+        .breadcrumb a {
+            text-decoration: none;
+            color: #e4f2f3;
+            margin: 0 5px;
+        }
+        .breadcrumb a::after {
+            content: '>';
+            margin-left: 5px;
+        }
+        .breadcrumb a:last-of-type::after {
+            content: '';
+        }
+        main {
+            padding: 20px;
+            width: 100%;
+        }
+        .experiment {
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 15px;
+            margin: 10px 0;
+            background-color: #fff;
+        }
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            width: 100%;
+            position: fixed;
+            bottom: 0;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <img src="logo.png" alt="Virtual Labs Logo" class="logo">
+    <h1>Experiments</h1>
+</header>
+
+<div class="breadcrumb">
+    <a href="ind.html">Home</a>
+    
+    <a href="exp.html"> Embedded c++ Experiments</a>
+</div>
+
+<main>
+    <h2>List of Experiments</h2>
+
+    <div class="experiment">
+        <h3><a href="exp1.html">Experiment 1: Light Intensity Measurement</a></h3>
+    </div>
+
+    <div class="experiment">
+        <h3><a href="exp2.html">Experiment 2: Temperature Monitoring</a></h3>
+    </div>
+
+</main>
+
+<footer>
+    <p>&copy; 2025 Virtual Labs. All rights reserved.</p>
+</footer>
+
+</body>
+</html>
