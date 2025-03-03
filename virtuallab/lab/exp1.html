@@ -3,8 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Experiment 1: Light Intensity Measurement</title>
+    <title>Experiment 3: LCD Interfacing with LPC2148</title>
     <style>
+        .quiz-container {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        .question {
+            font-weight: bold;
+            text-align: left;
+        }
+        .result {
+            margin-top: 20px;
+            font-weight: bold;
+            color: green;
+        }
         body {
             font-family: Arial, sans-serif;
             background-color: #f4f4f9;
@@ -16,15 +29,23 @@
             text-align: center;
         }
         header {
-            background-color: #4ca3a7;
+            background-color: #abd5d8;
             color: white;
             padding: 20px;
             width: 100%;
         }
+        .em{ 
+            color: #2c676a;
+            padding: 0px;
+            border-radius: 0px;
+            margin: px 0;
+            font-weight: bold;
+
+        }
         .logo {
-            width: 50px;
+            width: 150px;
             height: auto;
-            margin-bottom: 10px;
+            margin-bottom: 0px;
         }
         .breadcrumb {
             background-color: #fff;
@@ -75,15 +96,6 @@
             background-color: #fff;
             text-align: left;
         }
-        footer {
-            background-color: #333;
-            color: white;
-            text-align: center;
-            padding: 10px;
-            width: 100%;
-            position: fixed;
-            bottom: 0;
-        }
         .simulation-images img {
             max-width: 100%;
             height: auto;
@@ -94,8 +106,8 @@
 <body>
 
 <header>
-    <img src="" alt="Virtual Labs Logo" class="logo">
-    <h1>Experiment 1: Light Intensity Measurement</h1>
+    <img src="VT.PNG" alt="Virtual Labs Logo" class="logo">
+    <div class=em><h1>Experiment 1: ON/OFF control of LED using GPIO pins of Microcontroller.</h1></div>
 </header>
 
 <div class="breadcrumb">
@@ -105,48 +117,140 @@
 </div>
 
 <nav>
-    <a href="#introduction"><img src="https://w7.pngwing.com/pngs/124/507/png-transparent-computer-icons-presentation-text-presentation-logo.png" alt="Introduction ">Introduction </a>
-    <a href="#theory"><img src="https://static.thenounproject.com/png/3777211-200.png" alt="Theory "> Theory</a>
-    <a href="#simulation"><img src="https://icon-library.com/images/icon-simulation/icon-simulation-17.jpg" alt="Simulation "> Simulations</a>
-    <a href="#quizzes"><img src="https://w7.pngwing.com/pngs/346/688/png-transparent-test-computer-icons-quiz-miscellaneous-text-number-thumbnail.png" alt="Quizzes ">Quiz</a>
-    <a href="#references"><img src="https://cdn-icons-png.flaticon.com/512/2245/2245203.png" alt="References Logo"> References</a>
+    <a href="#introduction"><img src="https://w7.pngwing.com/pngs/124/507/png-transparent-computer-icons-presentation-text-presentation-logo.png" alt="Introduction"> Introduction</a>
+    <a href="#theory"><img src="https://static.thenounproject.com/png/3777211-200.png" alt="Theory"> Theory</a>
+    <a href="#simulation"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSYujVngxi7ZaiZrLMC2ICg1Ik1LOJuXnCBWA&s" alt="Simulation"> Simulations</a>
+    <a href="#quizzes"><img src="https://w7.pngwing.com/pngs/346/688/png-transparent-test-computer-icons-quiz-miscellaneous-text-number-thumbnail.png" alt="Quizzes"> Quiz</a>
+    <a href="#references"><img src="https://cdn-icons-png.flaticon.com/512/2245/2245203.png" alt="References"> References</a>
 </nav>
 
 <main>
     <div id="introduction" class="content">
         <h2>Introduction</h2>
-        <p>Details about the introduction...</p>
-        <h3>QBJECTIVES</h3>
-        <p>objectives of this experiments should be wriiten.....here</p>
+        <p>This experiment demonstrates the interfacing of a LED module with the LPC2148 microcontroller.</p>
+        <h3>Objectives</h3>
+        <ul>
+            <li>To learn how to connect and configure an LED with the LPC2148 microcontroller.</li>
+            <li>To explore the basics of GPIO pin configuration for communication with peripherals.</li>
+        </ul>
     </div>
+
     <div id="theory" class="content" style="display:none;">
         <h2>Theory</h2>
-        <p>Details about the theory...</p>
+        <ul>
+            <li>1. Introduction: The experiment focuses on using General-Purpose Input/Output (GPIO) pins of a microcontroller to control an LED. GPIO pins are versatile and can be programmed to function either as input or output. In this experiment, the GPIO pin is configured as an output to control the LED state.</li>
+            <li>2. GPIO Overview: GPIO pins are digital pins on a microcontroller that can be controlled by software. They are used to interface with various external devices such as LEDs, switches, sensors, and more. Each GPIO pin can be independently configured as an input or output.</li>
+            <li>3. Microcontroller and LED Basics: An LED (Light Emitting Diode) is a semiconductor device that emits light when an electric current passes through it. A microcontroller is a compact integrated circuit designed to govern a specific operation in an embedded system. For this experiment, an LPC214x series microcontroller is used.</li>
+            <li>4. Working Principle: The microcontroller’s GPIO pin is programmed to output a digital signal (high or low) to control the LED. When the GPIO pin outputs a high signal (logic 1), the LED is turned off. When it outputs a low signal (logic 0), the LED is turned on.</li>
+            <li>5. Circuit Design: Microcontroller: LPC214x; LED: Connected to a GPIO pin (P0.0); Resistor: Used to limit the current through the LED and prevent damage to the microcontroller and LED.</li>
+            <li>6. Software Implementation: The microcontroller is programmed to toggle the LED state by switching the GPIO pin between high and low states. The software implementation typically involves the following steps:
+                <ul>
+                    <li>Initialization: Configure the GPIO pin as an output pin.</li>
+                    <li>LED Control: Use software to set the GPIO pin high or low, thereby controlling the LED state.</li>
+                </ul>
+            </li>
+        </ul>
     </div>
+
     <div id="simulation" class="content" style="display:none;">
         <h2>Simulation</h2>
         <div class="simulation-images">
-            <img src="simulation_image1.png" alt="Simulation Image 1"></div>
-        
-            <div class="simulation-images">
-                <img src="simulation_image1.png" alt="Simulation Image 1"></div>
-            
-        
-        <p>Details about the simulation...</p>
+            <img src="ex1ledss3.jpg" alt="Simulation Image 1">
+        </div>
+        <h2>Algorithm</h2>
+        <ol>
+            <li>The LED is connected to P0.0 using LED_PIN = 1 &lt;&lt; 0.</li>
+            <li>A class LED is created to manage the LED state.</li>
+            <li>The constructor initializes P0.0 as an output pin and sets the LED off.</li>
+            <li>The on() method turns the LED on, off() turns it off, and toggle() switches between on &amp; off.</li>
+            <li>The led.toggle() method is called repeatedly in the main loop to change the LED state.</li>
+            <li>A simple delay is added between each toggle to make the LED blink visibly.</li>
+        </ol>
+
+        <h3>Code for Simulation:</h3>
+        <pre>
+               #include &lt;lpc214x.h&gt	// LED pin definition
+                #define LED_PIN (1 << 0)  // P0.0	
+                class LED {	// Class to encapsulate LED functionality
+                public:		 // Constructor: Initialize GPIO pin for LED
+                    LED() {
+                        IODIR0 |= LED_PIN; 	 // Set P0.0 as output
+                        IOSET0 = LED_PIN;   	// Turn LED off initially
+                    }	// Function to turn the LED on
+                    void on() {
+                        IOCLR0 = LED_PIN; 	   // Clear P0.0 (turn LED on)
+                    }
+                    // Function to turn the LED off
+                    void off() {
+                        IOSET0 = LED_PIN;  		// Set P0.0 (turn LED off)
+                    }	 // Function to toggle the LED
+                    void toggle() {
+                        if (IOPIN0 & LED_PIN) {
+                            on(); 	 // If LED is off, turn it on
+                        } else {
+                            off();	 // If LED is on, turn it off
+                        }
+                    }
+                };
+                int main() {
+                    LED led;	  // Create an LED object
+                    while (1) {
+                        led.toggle();       // Toggle the LED state
+                        for (volatile int i = 0; i < 1000000; i++);  	// Simple delay loop
+                    }
+                }
+                
+        </pre>
     </div>
+
     <div id="quizzes" class="content" style="display:none;">
-        <h2>Quizzes</h2>
-        <p>Details about the quizzes...</p>
+        
+        <p>Test your knowledge on LCD interfacing with LPC2148 by answering a few questions...</p>
+
+        <div class="quiz-container">
+            <h1>Quiz: ON/OFF Control of LED using GPIO Pins</h1>
+            <div class="question" id="question1">
+                1. Which GPIO pin is typically used to control an LED?
+                <ul>
+                    <li><input type="radio" name="q1" value="A"> Pin A</li>
+                    <li><input type="radio" name="q1" value="B"> Pin B</li>
+                    <li><input type="radio" name="q1" value="C"> Pin C</li>
+                    <li><input type="radio" name="q1" value="D"> Pin D</li>
+                </ul>
+            </div>
+            <div class="question" id="question2">
+                2. What is the purpose of a current-limiting resistor in an LED circuit?
+                <ul>
+                    <li><input type="radio" name="q2" value="A"> To increase brightness</li>
+                    <li><input type="radio" name="q2" value="B"> To prevent excessive current</li>
+                    <li><input type="radio" name="q2" value="C"> To control voltage</li>
+                    <li><input type="radio" name="q2" value="D"> To switch the LED on and off</li>
+                </ul>
+            </div>
+            <div class="question" id="question3">
+                3. Which of the following is the correct command to set a GPIO pin as an output in most microcontrollers?
+                <ul>
+                    <li><input type="radio" name="q3" value="A"> GPIO_SET_OUTPUT()</li>
+                    <li><input type="radio" name="q3" value="B"> GPIO_OUTPUT_ENABLE()</li>
+                    <li><input type="radio" name="q3" value="C"> GPIO_DIR_OUTPUT()</li>
+                    <li><input type="radio" name="q3" value="D"> GPIO_PIN_OUTPUT()</li>
+                </ul>
+            </div>
+            <button onclick="checkAnswers()">Submit</button>
+            <div class="result" id="result"></div>
+        </div>
     </div>
+
     <div id="references" class="content" style="display:none;">
         <h2>References</h2>
-        <p>Details about the references...</p>
+        <p>1. LPC2148 User Manual</p>
+        <p>2. Proteus Simulation Software Documentation</p>
+        <p>3. Keil uVision 4 Software Documentation</p>
+        <p>4. To download Proteus: <a href ="https://drive.google.com/file/d/1GGlGCRe1Jc-lDB_VQPI5U6NvhH1jyKiQ/view?usp=classroom_web&authuser=1">click here</a></p>
+        <p>5.To download Keil: <a href ="https://drive.google.com/file/d/1i_rzuiFCDqpopZwbvClooDyZJFZRnzvr/view">click here</a></p>
+        
     </div>
 </main>
-
-<footer>
-    <p>&copy; 2025 Virtual Labs. All rights reserved.</p>
-</footer>
 
 <script>
     document.querySelectorAll('nav a').forEach(link => {
@@ -157,6 +261,19 @@
             document.getElementById(sectionId).style.display = 'block';
         });
     });
+
+    // Hide the quiz section initially
+    document.getElementById('quizzes').style.display = 'none';
+
+    function checkAnswers() {
+        let correct = 0;
+
+        if (document.querySelector('input[name="q1"]:checked')?.value === "B") correct++;
+        if (document.querySelector('input[name="q2"]:checked')?.value === "B") correct++;
+        if (document.querySelector('input[name="q3"]:checked')?.value === "C") correct++;
+
+        document.getElementById("result").innerText = `You got ${correct} out of 3 questions correct!`;
+    }
 </script>
 
 </body>

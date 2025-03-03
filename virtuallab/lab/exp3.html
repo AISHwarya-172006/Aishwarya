@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Experiment 3:Design and Interface an LCD module with microcontroller </title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+        header {
+            background-color:  #abd5d8;
+            color: white;
+            padding: 20px;
+            width: 100%;
+        }
+        .logo {
+            width: 150px;
+            height: auto;
+            margin-bottom: 0px;
+        }
+        .breadcrumb {
+            background-color: #fff;
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            font-size: 14px;
+            width: 100%;
+            text-align: left;
+            display: flex;
+            align-items: center;
+        }
+        .breadcrumb a {
+            text-decoration: none;
+            color: #4ca3a7;
+            margin: 0 5px;
+        }
+        .breadcrumb a::after {
+            content: '>';
+            margin-left: 5px;
+        }
+        .breadcrumb a:last-of-type::after {
+            content: '';
+        }
+        .em{ 
+            color: #2c676a;
+            padding: 0px;
+            border-radius: 0px;
+            margin: px 0;
+            font-weight: bold;
+
+        }
+        nav {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+        nav a {
+            color: #4ca3a7;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        nav img {
+            width: 30px;
+            height: auto;
+        }
+        main {
+            padding: 20px;
+            width: 80%;
+        }
+        .content {
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 15px;
+            background-color: #fff;
+            text-align: left;
+        }
+        
+        .simulation-images img {
+            max-width: 100%;
+            height: auto;
+            margin-bottom: 10px;
+        }
+
+        .quiz-container {
+            padding: 20px;
+        }
+        .quiz-container h3 {
+            margin-bottom: 10px;
+        }
+        .quiz-container .question {
+            margin-bottom: 15px;
+        }
+        .quiz-container .question p {
+            margin: 5px 0;
+        }
+        .result {
+            margin-top: 20px;
+            font-weight: bold;
+            color: green;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <img src="VT.PNG" alt="Virtual Labs Logo" class="logo">
+    <div class=em><h1>Experiment 3:Design and Interface an LCD module with microcontroller</h1></div>
+</header>
+
+<div class="breadcrumb">
+    <a href="ind.html">Home</a>
+    <a href="exp.html">Embedded System Lab</a>
+    <a href="#">Experiment 3</a>
+</div>
+
+<nav>
+    <a href="#introduction"><img src="https://w7.pngwing.com/pngs/124/507/png-transparent-computer-icons-presentation-text-presentation-logo.png" alt="Introduction ">Introduction </a>
+    <a href="#theory"><img src="https://static.thenounproject.com/png/3777211-200.png" alt="Theory "> Theory</a>
+    <a href="#simulation"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSYujVngxi7ZaiZrLMC2ICg1Ik1LOJuXnCBWA&s" alt="Simulation "> Simulations</a>
+    <a href="#quizzes"><img src="https://w7.pngwing.com/pngs/346/688/png-transparent-test-computer-icons-quiz-miscellaneous-text-number-thumbnail.png" alt="Quizzes ">Quiz</a>
+    <a href="#references"><img src="https://cdn-icons-png.flaticon.com/512/2245/2245203.png" alt="References Logo"> References</a>
+</nav>
+
+
+<main>
+    <div id="introduction" class="content">
+        <h2>Introduction</h2>
+        <p>
+            In this experiment, we will explore how to design and interface an LCD (Liquid Crystal Display) module with a microcontroller. The LCD will be used to display textual information, which is crucial for providing visual output in embedded systems. By utilizing the GPIO pins of a microcontroller, we can control the LCD and display messages, numbers, or characters on it.
+        </p>
+        <h3>QBJECTIVES</h3>
+        <ul>
+            <li><p>Interface LCD Module: Connect the LCD's data and control pins to the microcontroller.</p></li>
+            <li><p>Configure GPIO Pins: Set up microcontroller pins to control the LCD.</p></li>
+            <li><p>Program Communication Protocol: Use the appropriate commands (e.g., 4-bit or 8-bit mode) to send data to the LCD.</p></li>
+            <li><p>Display Data: Write a program to display text or numbers on the LCD.</p></li>
+            <li><p>Test and Verify: Ensure that the LCD correctly displays the programmed content.</p></li>
+        </ul>
+    </div>
+    <div id="theory" class="content" style="display:none;">
+   
+            <h2>Theory</h2>
+            <p>
+                An LCD (Liquid Crystal Display) is a flat-panel display that utilizes liquid crystals to display information. It is commonly used in embedded systems to show data such as numbers, characters, or messages. LCD modules come in various sizes and resolutions, but most microcontroller-based systems use the standard 16x2 LCD, which can display two rows of 16 characters.
+            </p>
+        
+            <p>
+                The interfacing of an LCD with a microcontroller requires proper connection and communication protocols. The communication between the microcontroller and the LCD can be done in either 4-bit or 8-bit mode. The control signals used for interfacing typically include RS (Register Select), RW (Read/Write), and E (Enable), while the data lines carry the actual information to be displayed.
+            </p>
+        
+            <p>Key Concepts:</p>
+            <ul>
+                <li>
+                    <strong>LCD Pin Configuration:</strong>
+                    <p>The standard 16x2 LCD module has 16 pins. The key pins include:</p>
+                    <ul>
+                        <li><strong>RS (Register Select):</strong> Determines whether the operation is for sending data or command.</li>
+                        <li><strong>RW (Read/Write):</strong> Controls whether the microcontroller is writing data or reading from the LCD.</li>
+                        <li><strong>E (Enable):</strong> Used to latch the data into the LCD.</li>
+                        <li><strong>Data Pins (D0-D7):</strong> Used to send data to the LCD in 4-bit or 8-bit mode.</li>
+                    </ul>
+                </li>
+                <li>
+                    <strong>Communication Modes:</strong>
+                    <p>The LCD can operate in two modes:</p>
+                    <ul>
+                        <li><strong>8-bit Mode:</strong> All 8 data bits are sent to the LCD in one operation.</li>
+                        <li><strong>4-bit Mode:</strong> Only 4 data bits are sent at a time, making it more efficient in terms of pin usage.</li>
+                    </ul>
+                </li>
+                <li>
+                    <strong>Initialization:</strong>
+                    <p>The LCD needs to be initialized with specific commands to configure it into the desired mode. This includes setting the data mode (4-bit or 8-bit) and clearing the display.</p>
+                </li>
+                <li>
+                    <strong>Commands and Functions:</strong>
+                    <p>The LCD operates by sending specific commands that control its behavior, such as moving the cursor, clearing the screen, or changing the display mode. Some common commands include:</p>
+                    <ul>
+                        <li><strong>0x01:</strong> Clear display.</li>
+                        <li><strong>0x80:</strong> Set cursor to the beginning of the first line.</li>
+                        <li><strong>0xC0:</strong> Set cursor to the beginning of the second line.</li>
+                        <li><strong>0x0C:</strong> Display ON, Cursor OFF.</li>
+                    </ul>
+                </li>
+            </ul>
+    
+        
+    </div>
+    <div id="simulation" class="content" style="display:none;">
+        <h2>Simulation</h2>
+        <div class="simulation-images">
+            
+
+        
+            <div class="simulation-images">
+                <img src="Screenshot 2025-03-03 095450.png" alt="Simulation Image 1"></div>
+ <h2>Algorithm Steps:</h2>
+    <ol>
+        <li>Connect the LCD's data pins (D0-D7) and control pins (RS, RW, EN) to the GPIO pins of the LPC2148.</li>
+        <li>Configure the GPIO pins as output in the program for proper communication with the LCD.</li>
+        <li>Initialize the LCD in 8-bit or 4-bit mode and send initialization commands for proper display setup.</li>
+        <li>Write a program to send data (characters or strings) to the LCD for display.</li>
+        <li>Use functions to send commands for clearing the display and moving the cursor as required.</li>
+        <li>Load the program onto the LPC2148 and verify that the LCD displays the intended text or messages.</li>
+    </ol>
+     <h2> Source Code</h2>       
+    <pre>
+        #include &lt;lpc214x.h&gt;
+        #include &lt;stdint.h&gt;    // Pin definitions for LCD
+        #define RS (1 &lt;&lt; 0)      // P0.0 for Register Select
+        #define RW (1 &lt;&lt; 1)      // P0.1 for Read/Write
+        #define E  (1 &lt;&lt; 2)      // P0.2 for Enable
+        #define DATA_PINS_MASK (0xF &lt;&lt; 4)   // P0.4 to P0.7 for Data
+        
+        class LCD {
+        public:
+            LCD() {
+                IODIR0 |= (RS | RW | E | DATA_PINS_MASK);  // Set control and data pins as output
+                IOCLR0 = (RS | RW | E | DATA_PINS_MASK);   // Clear all pins
+                init();
+            }    // Initialize the LCD
+            
+            void init() {
+                delay(20);        // Wait for power stabilization
+                command(0x02);    // Initialize in 4-bit mode
+                command(0x28);    // 2 lines, 5x7 matrix
+                command(0x0C);    // Display ON, Cursor OFF
+                command(0x06);    // Auto-increment cursor
+                command(0x01);    // Clear display
+            }
+        
+            void command(uint8_t cmd) {
+                send(cmd, false);
+            }    // Send data to the LCD
+        
+            void write(uint8_t data) {
+                send(data, true);
+            }    // Display a string on the LCD
+        
+            void display(const char *str) {
+                while (*str) {
+                    write(*str++);
+                }
+            }
+        
+        private:
+            void send(uint8_t value, bool isData) {        // Set RS (data/command mode)
+                if (isData) {
+                    IOSET0 = RS;
+                } else {
+                    IOCLR0 = RS;
+                }
+                IOCLR0 = RW;      // Set RW to Write
+                writeNibble(value &gt;&gt; 4);      // Send higher nibble
+                writeNibble(value);       // Send lower nibble
+            }
+        
+            void writeNibble(uint8_t nibble) {
+                IOCLR0 = DATA_PINS_MASK;  // Clear data pins
+                IOSET0 = (nibble &amp; 0xF) &lt;&lt; 4;  // Set nibble on data pins
+                pulseEnable();  // Send enable pulse
+            }
+        
+            void pulseEnable() {
+                IOSET0 = E;
+                delay(1);
+                IOCLR0 = E;
+                delay(1);
+            }
+        
+            void delay(unsigned int ms) {
+                for (volatile unsigned int i = 0; i &lt; ms * 3000; i++);
+            }
+        };
+        
+        int main() {
+            LCD lcd;      // Create an LCD object
+            lcd.display("Welcome to Embedded C++");      // Display a message
+            while (1) {
+                // Keep running
+            }
+            return 0;
+        }
+       
+            </pre>
+        
+        
+    </div>
+    <div id="quizzes" class="content" style="display:none;">
+        <h2>Quizzes</h2>
+        <div class="quiz-container">
+            <h3>Test Your Knowledge</h3>
+            <form id="quiz-form">
+                <div class="question">
+                    <p><strong>1. What is a seven-segment display used for?</strong></p>
+                    <label>
+                        <input type="radio" name="q1" value="A"> A. Displaying text
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q1" value="B"> B. Displaying numerical digits
+                    </label><br>
+                    
+                    <label>
+                        <input type="radio" name="q1" value="C"> C. Sound output
+                    </label><br>
+                </div>
+                
+                <div class="question">
+                    <p><strong>2. How many segments does a seven-segment display have?</strong></p>
+                    <label>
+                        <input type="radio" name="q2" value="A"> A. 7
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q2" value="B"> B. 8
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q2" value="C"> C. 6
+                    </label><br>
+                </div>
+                
+                <div class="question">
+                    <p><strong>3. What is the function of the common pin in a seven-segment display?</strong></p>
+                    <label>
+                        <input type="radio" name="q3" value="A"> A. It connects all segments together.
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q3" value="B"> B. It determines the voltage level for the display.
+                    </label><br>
+                    
+                    <label>
+                        <input type="radio" name="q3" value="C"> C. It is used for controlling the display brightness.
+                    </label><br>
+                </div>
+
+                <div class="question">
+                    <p><strong>4. What is multiplexing in seven-segment displays?</strong></p>
+                    <label>
+                        <input type="radio" name="q4" value="A"> A. Displaying multiple digits by rapidly switching between them
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q4" value="B"> B. Displaying numbers in binary format
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q4" value="C"> C. Turning on all segments at once
+                    </label><br>
+                </div>
+
+                <div class="question">
+                    <p><strong>5. Which microcontroller is used in this experiment?</strong></p>
+                    <label>
+                        <input type="radio" name="q5" value="A"> A. LPC2148
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q5" value="B"> B. PIC16F84
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q5" value="C"> C. Arduino Uno
+                    </label><br>
+                </div>
+
+                <button type="button" onclick="checkAnswers()">Submit</button>
+            </form>
+            <div class="result" id="quiz-result"></div>
+        </div>
+    </div>
+
+    <div id="references" class="content" style="display:none;">
+        <h2>References</h2>
+        <p>Details about the references...</p>
+    </div>
+</main>
+
+<script>
+    function checkAnswers() {
+        const correctAnswers = {
+            q1: 'A',
+            q2: 'A',
+            q3: 'B',
+            q4: 'A',
+            q5: 'B'
+        };
+        
+        let score = 0;
+        let totalQuestions = Object.keys(correctAnswers).length;
+
+        Object.keys(correctAnswers).forEach(question => {
+            const selectedAnswer = document.querySelector(`input[name="${question}"]:checked`);
+            if (selectedAnswer && selectedAnswer.value === correctAnswers[question]) {
+                score++;
+            }
+        });
+
+        const resultDiv = document.getElementById('quiz-result');
+        resultDiv.innerHTML = `You answered ${score} out of ${totalQuestions} questions correctly.`;
+        resultDiv.style.color = score === totalQuestions ? 'green' : 'red';
+    }
+
+    document.querySelectorAll('nav a').forEach(link => {
+        link.addEventListener('click', function(event) {
+            event.preventDefault();
+            document.querySelectorAll('.content').forEach(section => section.style.display = 'none');
+            const sectionId = this.getAttribute('href').substring(1);
+            document.getElementById(sectionId).style.display = 'block';
+        });
+    });
+</script>
+
+
+</body>
+</html>

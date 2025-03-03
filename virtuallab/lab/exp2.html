@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Experiment 1: Light Intensity Measurement</title>
+    <title>Experiment 2:  Interfacing the Seven-Segment Display with Microcontroller.</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -16,15 +16,15 @@
             text-align: center;
         }
         header {
-            background-color: #4ca3a7;
+            background-color:  #abd5d8;
             color: white;
             padding: 20px;
             width: 100%;
         }
         .logo {
-            width: 10px;
+            width: 150px;
             height: auto;
-            margin-bottom: 10px;
+            margin-bottom: 0px;
         }
         .breadcrumb {
             background-color: #fff;
@@ -48,6 +48,14 @@
         }
         .breadcrumb a:last-of-type::after {
             content: '';
+        }
+        .em{ 
+            color: #2c676a;
+            padding: 0px;
+            border-radius: 0px;
+            margin: px 0;
+            font-weight: bold;
+
         }
         nav {
             display: flex;
@@ -75,80 +83,222 @@
             background-color: #fff;
             text-align: left;
         }
-        footer {
-            background-color: #333;
-            color: white;
-            text-align: center;
-            padding: 10px;
-            width: 100%;
-            position: fixed;
-            bottom: 0;
-        }
+        
         .simulation-images img {
             max-width: 100%;
             height: auto;
             margin-bottom: 10px;
+        }
+
+        .quiz-container {
+            padding: 20px;
+        }
+        .quiz-container h3 {
+            margin-bottom: 10px;
+        }
+        .quiz-container .question {
+            margin-bottom: 15px;
+        }
+        .quiz-container .question p {
+            margin: 5px 0;
+        }
+        .result {
+            margin-top: 20px;
+            font-weight: bold;
+            color: green;
         }
     </style>
 </head>
 <body>
 
 <header>
-    <img src="logo.png" alt="Virtual Labs Logo" class="logo">
-    <h1>Experiment 1: Light Intensity Measurement</h1>
+    <img src="VT.PNG" alt="Virtual Labs Logo" class="logo">
+    <div class=em><h1>Experiment 2: Interfacing the Seven-Segment Display with Microcontroller.</h1></div>
 </header>
 
 <div class="breadcrumb">
     <a href="ind.html">Home</a>
     <a href="exp.html">Embedded System Lab</a>
-    <a href="#">Experiment 1</a>
+    <a href="#">Experiment 2</a>
 </div>
 
 <nav>
-    <a href="#introduction"><img src="logo.png" alt="Introduction "> </a>
-    <a href="#theory"><img src="theory_logo.png" alt="Theory "> </a>
-    <a href="#simulation"><img src="simulation_logo.png" alt="Simulation "> </a>
-    <a href="#quizzes"><img src="quizzes_logo.png" alt="Quizzes "></a>
-    <a href="#references"><img src="references_logo.png" alt="References Logo"> </a>
+    <a href="#introduction"><img src="https://w7.pngwing.com/pngs/124/507/png-transparent-computer-icons-presentation-text-presentation-logo.png" alt="Introduction ">Introduction </a>
+    <a href="#theory"><img src="https://static.thenounproject.com/png/3777211-200.png" alt="Theory "> Theory</a>
+    <a href="#simulation"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSYujVngxi7ZaiZrLMC2ICg1Ik1LOJuXnCBWA&s" alt="Simulation "> Simulations</a>
+    <a href="#quizzes"><img src="https://w7.pngwing.com/pngs/346/688/png-transparent-test-computer-icons-quiz-miscellaneous-text-number-thumbnail.png" alt="Quizzes ">Quiz</a>
+    <a href="#references"><img src="https://cdn-icons-png.flaticon.com/512/2245/2245203.png" alt="References Logo"> References</a>
 </nav>
 
 <main>
     <div id="introduction" class="content">
         <h2>Introduction</h2>
-        <p>Details about the introduction...</p>
-        <h3>QBJECTIVES</h3>
-        <p>objectives of this experiments should be wriiten.....here</p>
+        <p>The 7-segment display is an essential component for showing numerical data. Paired with the versatile LPC2148 microcontroller, this project aims to display digits 0-9 sequentially.</p>
+        <h2>Objectives</h2>
+        <ul>
+            <li>Connect 7-Segment Display: Attach segments (A-G) to LPC2148 GPIO pins using resistors.</li>
+            <li>Configure GPIO Pins: Set GPIO pins as output.</li>
+            <li>Create Lookup Table: Develop bit patterns for digits 0-9.</li>
+            <li>Write Program: Send bit patterns to display each digit and implement delays.</li>
+            <li>Test and Verify: Load the program and ensure the display shows 0-9 sequentially.</li>
+        </ul>
     </div>
+
     <div id="theory" class="content" style="display:none;">
         <h2>Theory</h2>
-        <p>Details about the theory...</p>
+        <p>
+            A seven-segment display consists of 7 LEDs arranged in a figure-eight shape that can represent digits 0-9. The segments are labeled as a, b, c, d, e, f, and g. These segments are controlled by a microcontroller to form different numbers and characters.
+        </p>
+    
+        <p>Key Points:</p>
+        <ul>
+            <li><strong>Types of Displays:</strong> 
+                <ul>
+                    <li>Common Cathode: Common pin to ground, segments turn on with HIGH signals.</li>
+                    <li>Common Anode: Common pin to Vcc, segments turn on with LOW signals.</li>
+                </ul>
+            </li>
+            <li><strong>Pin Connections:</strong> 7 pins for segments (a-g) and 1 common pin (ground or Vcc).</li>
+            <li><strong>Control:</strong> Can be controlled directly by the microcontroller or with a BCD decoder/driver like the 74LS47.</li>
+            <li><strong>Multiplexing:</strong> Multiple digits can be displayed by switching between them rapidly (multiplexing).</li>
+        </ul>
     </div>
+
     <div id="simulation" class="content" style="display:none;">
         <h2>Simulation</h2>
         <div class="simulation-images">
-            <img src="simulation_image1.png" alt="Simulation Image 1"></div>
+            <img src="Screenshot (79).png" alt="Simulation Image 1"></div>
         
-            <div class="simulation-images">
-                <img src="simulation_image1.png" alt="Simulation Image 1"></div>
-            
-        
-        <p>Details about the simulation...</p>
+        <h2>Algorithm</h2>
+        <ol>
+            <li>Connect the 7-segment display's segments (A-G) to the GPIO pins of the LPC2148, using appropriate current-limiting resistors.</li>
+            <li>Configure the GPIO pins as output pins in the program.</li>
+            <li>Create a lookup table or an array to represent the bit patterns for digits 0-9.</li>
+            <li>Write a program to send the corresponding bit patterns to the 7-segment display to show each digit.</li>
+            <li>Implement delays between digit changes to allow for visible display of each number.</li>
+            <li>Load the program into the LPC2148, and verify the 7-segment display shows the numbers 0-9 sequentially.</li>
+        </ol>
+        <h3>Code for Simulation:</h3>
+        <pre>
+            // Code shown earlier
+        </pre>
     </div>
+
     <div id="quizzes" class="content" style="display:none;">
         <h2>Quizzes</h2>
-        <p>Details about the quizzes...</p>
+        <div class="quiz-container">
+            <h3>Test Your Knowledge</h3>
+            <form id="quiz-form">
+                <div class="question">
+                    <p><strong>1. What is a seven-segment display used for?</strong></p>
+                    <label>
+                        <input type="radio" name="q1" value="A"> A. Displaying text
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q1" value="B"> B. Displaying numerical digits
+                    </label><br>
+                    
+                    <label>
+                        <input type="radio" name="q1" value="C"> C. Sound output
+                    </label><br>
+                </div>
+                
+                <div class="question">
+                    <p><strong>2. How many segments does a seven-segment display have?</strong></p>
+                    <label>
+                        <input type="radio" name="q2" value="A"> A. 7
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q2" value="B"> B. 8
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q2" value="C"> C. 6
+                    </label><br>
+                </div>
+                
+                <div class="question">
+                    <p><strong>3. What is the function of the common pin in a seven-segment display?</strong></p>
+                    <label>
+                        <input type="radio" name="q3" value="A"> A. It connects all segments together.
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q3" value="B"> B. It determines the voltage level for the display.
+                    </label><br>
+                    
+                    <label>
+                        <input type="radio" name="q3" value="C"> C. It is used for controlling the display brightness.
+                    </label><br>
+                </div>
+
+                <div class="question">
+                    <p><strong>4. What is multiplexing in seven-segment displays?</strong></p>
+                    <label>
+                        <input type="radio" name="q4" value="A"> A. Displaying multiple digits by rapidly switching between them
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q4" value="B"> B. Displaying numbers in binary format
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q4" value="C"> C. Turning on all segments at once
+                    </label><br>
+                </div>
+
+                <div class="question">
+                    <p><strong>5. Which microcontroller is used in this experiment?</strong></p>
+                    <label>
+                        <input type="radio" name="q5" value="A"> A. LPC2148
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q5" value="B"> B. PIC16F84
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q5" value="C"> C. Arduino Uno
+                    </label><br>
+                </div>
+
+                <button type="button" onclick="checkAnswers()">Submit</button>
+            </form>
+            <div class="result" id="quiz-result"></div>
+        </div>
     </div>
+
     <div id="references" class="content" style="display:none;">
         <h2>References</h2>
-        <p>Details about the references...</p>
+        <h2>References</h2>
+        <p>1. LPC2148 User Manual</p>
+        <p>2. Proteus Simulation Software Documentation</p>
+        <p>3. Keil uVision 4 Software Documentation</p>
+        <p>4. To download Proteus: <a href ="https://drive.google.com/file/d/1GGlGCRe1Jc-lDB_VQPI5U6NvhH1jyKiQ/view?usp=classroom_web&authuser=1">click here</a></p>
+        <p>5.To download Keil: <a href ="https://drive.google.com/file/d/1i_rzuiFCDqpopZwbvClooDyZJFZRnzvr/view">click here</a></p>
+       
     </div>
 </main>
 
-<footer>
-    <p>&copy; 2025 Virtual Labs. All rights reserved.</p>
-</footer>
-
 <script>
+    function checkAnswers() {
+        const correctAnswers = {
+            q1: 'A',
+            q2: 'A',
+            q3: 'B',
+            q4: 'A',
+            q5: 'B'
+        };
+        
+        let score = 0;
+        let totalQuestions = Object.keys(correctAnswers).length;
+
+        Object.keys(correctAnswers).forEach(question => {
+            const selectedAnswer = document.querySelector(`input[name="${question}"]:checked`);
+            if (selectedAnswer && selectedAnswer.value === correctAnswers[question]) {
+                score++;
+            }
+        });
+
+        const resultDiv = document.getElementById('quiz-result');
+        resultDiv.innerHTML = `You answered ${score} out of ${totalQuestions} questions correctly.`;
+        resultDiv.style.color = score === totalQuestions ? 'green' : 'red';
+    }
+
     document.querySelectorAll('nav a').forEach(link => {
         link.addEventListener('click', function(event) {
             event.preventDefault();

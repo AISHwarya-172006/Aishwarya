@@ -12,7 +12,7 @@
             padding: 0;
         }
         header {
-            background-color: #4ca3a7;
+            background-color:#abd5d8;
             color: white;
             padding: 20px;
             text-align: center;
@@ -46,15 +46,30 @@
             background-color: #333;
             color: white;
             text-align: center;
-            padding: 0.2px;
+            padding: 0px;
             position: fixed;
             bottom: 0;
             width: 100%;
         }
-        .logo {
-            width: 100px; /* Reduced the width to make the logo smaller */
-            height: auto;
-            margin: 10px;
+        .slogo {
+            position: absolute;
+      top: 5px;   /* distance from top */
+      right: 10px;  /* distance from left */
+      width: 80px; /* Adjust size of the logo */
+        }
+        .vlogo{
+            position: absolute;
+            top: 5px;   /* distance from top */
+      left: 10px;  /* distance from left */
+      width: 100px; /* Adjust size of the logo */
+        }
+        .em{ 
+            color: #2c676a;
+            padding: 10px;
+            border-radius: 0px;
+            margin: 20px 0;
+            font-weight: bold;
+
         }
         .welcome-message {
             background-color: #fff;
@@ -69,8 +84,9 @@
 <body>
 
 <header>
-    <img src="https://gmeet.skcet.ac.in/assets/images/Institution-Logo.png" alt="SCKET College Coimbatore Logo" class="logo">
-    <h1>EMBEDDED C++</h1>
+    <img src="VT.PNG" alt="virtuallabs" class="vlogo">
+    <img src="https://gmeet.skcet.ac.in/assets/images/Institution-Logo.png" alt="SCKET College Coimbatore Logo" class="slogo">
+    <div class="em"><h1>EMBEDDED C++</h1></div>
     <div class="welcome-message">Welcome to Embedded C++ Lab!</div>
 </header>
 
@@ -103,7 +119,7 @@
 </ul>
 
 <footer>
-    <p>&copy; 2025 Virtual Labs. All rights reserved.</p>
+    <p>&copy; 2025 Virtual Labs</p>
 </footer>
 
 </body>

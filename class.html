@@ -1,0 +1,75 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AND Gate Simulation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 50px;
+        }
+        .button {
+            width: 60px;
+            height: 60px;
+            font-size: 20px;
+            margin: 10px;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+        }
+        .on { background-color: green; color: white; }
+        .off { background-color: red; color: white; }
+        .output {
+            display: inline-block;
+            width: 100px;
+            height: 50px;
+            line-height: 50px;
+            font-size: 24px;
+            margin-top: 20px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>AND Gate Simulation</h2>
+
+    <button id="inputA" class="button off" onclick="toggleInput('A')">A: 0</button>
+    <button id="inputB" class="button off" onclick="toggleInput('B')">B: 0</button>
+
+    <h3>Output:</h3>
+    <div id="output" class="output off">0</div>
+
+    <script>
+        let A = 0, B = 0;
+
+        function toggleInput(input) {
+            if (input === 'A') A = A === 0 ? 1 : 0;
+            if (input === 'B') B = B === 0 ? 1 : 0;
+           
+            updateUI();
+        }
+
+        function updateUI() {
+            document.getElementById('inputA').textContent = `A: ${A}`;
+            document.getElementById('inputA').className = `button ${A ? 'on' : 'off'}`;
+
+            document.getElementById('inputB').textContent = `B: ${B}`;
+            document.getElementById('inputB').className = `button ${B ? 'on' : 'off'}`;
+
+            let output = A & B;
+            let outputDiv = document.getElementById('output');
+            outputDiv.textContent = output;
+            outputDiv.className = `output ${output ? 'on' : 'off'}`;
+        }
+    </script>
+
+</body>
+</html>
+--
+C.Thirumarai Selvi
+Professor Department of ECE
+Sri Krishna College of Engineering and Technology-Coimbatore

@@ -16,15 +16,24 @@
             text-align: center;
         }
         header {
-            background-color: #4ca3a7;
+            background-color: #abd5d8;
             color: white;
             padding: 20px;
             width: 100%;
         }
+        .em{ 
+            color: #2c676a;
+            padding: 10px;
+            border-radius: 0px;
+            margin: 20px 0;
+            font-weight: bold;
+
+        }
         .logo {
-            width: 100px;
-            height: auto;
-            margin-bottom: 20px;
+            position: absolute;
+      top: 0px;   /* distance from top */
+      left: 20px;  /* distance from left */
+      width: 150px; /* Adjust size of the logo */
         }
         .breadcrumb {
             background-color: #67859e;
@@ -64,7 +73,7 @@
             background-color: #333;
             color: white;
             text-align: center;
-            padding: 10px;
+            padding: 0px;
             width: 100%;
             position: fixed;
             bottom: 0;
@@ -74,8 +83,8 @@
 <body>
 
 <header>
-    <img src="logo.png" alt="Virtual Labs Logo" class="logo">
-    <h1>Experiments</h1>
+    <img src="VT.PNG" alt="Virtual Labs Logo" class="logo">
+    <div class="em"><h1>Experiments</h1></div>
 </header>
 
 <div class="breadcrumb">
@@ -88,18 +97,35 @@
     <h2>List of Experiments</h2>
 
     <div class="experiment">
-        <h3><a href="exp1.html">Experiment 1: Light Intensity Measurement</a></h3>
+        <h3><a href="exp1.html">Experiment 1: ON/OFF control of LED using GPIO pins of Microcontroller.</a></h3>
     </div>
 
     <div class="experiment">
-        <h3><a href="exp2.html">Experiment 2: Temperature Monitoring</a></h3>
+        <h3><a href="exp2.html">Experiment 2: Interfacing the seven - segment display with Microcontroller</a></h3>
+    </div>
+    <div class="experiment">
+        <h3><a href="exp3.html">Experiment 3: Design and Interface an LCD module with Microcontroller</a></h3>
     </div>
 
+    <div class="experiment">
+        <h3><a href="exp4.html">Experiment 4: Read data from a temperature sensor using microcontroller.</a></h3>
+    </div>
+    <div class="experiment">
+        <h3><a href="exp5.html">Experiment 5:Interface and monitor a gas sensor with microcontroller.</a></h3>
+    </div>
+
+    <div class="experiment">
+        <h3><a href="exp6.html">Experiment 6: Connect an Analog-to-Digital Converter with a microcontroller for analog signal processing.</a></h3>
+    </div>
+    <div class="experiment">
+        <h3><a href="exp7.html">Experiment 7: Establish UART communication by interfacing a microcontroller for serial data transfer.</a></h3>
+    </div>
+    <div class="experiment">
+        <h3><a href="exp8.html">Experiment 8: Establish a communication with Bluetooth module using a microcontroller.</a></h3>
+    </div>
 </main>
 
-<footer>
-    <p>&copy; 2025 Virtual Labs. All rights reserved.</p>
-</footer>
+
 
 </body>
 </html>
